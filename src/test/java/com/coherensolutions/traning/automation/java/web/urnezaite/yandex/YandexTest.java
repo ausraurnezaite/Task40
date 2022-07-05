@@ -15,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 public class YandexTest {
     public WebDriver driver = new ChromeDriver();
 
@@ -39,7 +38,6 @@ public class YandexTest {
         driver.findElement(By.xpath("//input[@id='passp-field-passwd']")).sendKeys(password);
         driver.findElement(By.xpath("//button[@id='passp:sign-in']")).click();
 
-//                   Explicit Wait
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -48,16 +46,13 @@ public class YandexTest {
 
         By userLocator = By.xpath("//span[contains(@class, 'user-account')]");
 
-//        WebElement userElement = (new WebDriverWait(driver, Duration.ofSeconds(10)))
-//                .until(ExpectedConditions.presenceOfElementLocated(userLocator));
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
         wait.pollingEvery(Duration.ofMillis(700));
         WebElement userElement = wait.until(ExpectedConditions.presenceOfElementLocated(userLocator));
 
-        Assertions.assertEquals(username, userElement.getText());   //users logo has correct username
-        Assertions.assertTrue(driver.findElement(By.xpath("//div[contains(@class, 'PSHeaderIcon-Image_Mail')]")).isDisplayed());    //email icon is displayed
-        Assertions.assertTrue(driver.findElement(By.cssSelector("a[href='#compose']")).isEnabled());    //compose button is enabled
+        Assertions.assertEquals(username, userElement.getText(), "users logo has incorrect username");
+        Assertions.assertTrue(driver.findElement(By.xpath("//div[contains(@class, 'PSHeaderIcon-Image_Mail')]")).isDisplayed(), "email icon is not displayed");
+        Assertions.assertTrue(driver.findElement(By.cssSelector("a[href='#compose']")).isEnabled(), "compose button is not enabled");
     }
 
     @AfterEach

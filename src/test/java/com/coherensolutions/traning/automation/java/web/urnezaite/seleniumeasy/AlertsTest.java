@@ -4,49 +4,51 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.time.Duration;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AlertsTest {
-    public WebDriver driver = new ChromeDriver();
+/**
+ * 6.
+ * Create 3 tests for alerts
+ * (URL - https://demo.seleniumeasy.com/javascript-alert-box-demo.html).
+ * 2 tests for “Java Script Confirm Box” and
+ * 1 for “Java Script Alert Box”.
+ */
+public class AlertsTest extends BaseTest {
+    public final String comfirmBoxAfterConfirmExpectedText = "You pressed OK!";
+    public final String comfirmBoxAfterCancelExpectedText = "You pressed Cancel!";
+    public final String alertBoxText = "I am an alert box!";
 
     @BeforeEach
     public void setUp() {
-        driver.get("https://demo.seleniumeasy.com/javascript-alert-box-demo.html");
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
+        set(SeleniumEasyConstants.alertBoxLink);
     }
 
     @Test
-    public void comfirmBoxAfterConfirmTextTest() {
-        driver.findElement(By.cssSelector("button[onclick='myConfirmFunction()']")).click();
+    public void confirmBoxAfterConfirmTextTest() {
+        driver.findElement(SeleniumEasyConstants.comfirmBox).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
-        String textOnComfirm = driver.findElement(By.cssSelector("p#confirm-demo")).getText();
-        assertEquals("You pressed OK!", textOnComfirm);
+        String textOnComfirm = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
+        assertEquals(comfirmBoxAfterConfirmExpectedText, textOnComfirm, "text after confirmation must match");
     }
 
     @Test
-    public void comfirmBoxAfterCancelTextTest() {
-        driver.findElement(By.cssSelector("button[onclick='myConfirmFunction()']")).click();
+    public void confirmBoxAfterCancelTextTest() {
+        driver.findElement(SeleniumEasyConstants.comfirmBox).click();
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
-        String textOnCancel = driver.findElement(By.cssSelector("p#confirm-demo")).getText();
-        assertEquals("You pressed Cancel!", textOnCancel);
+        String textOnCancel = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
+        assertEquals(comfirmBoxAfterCancelExpectedText, textOnCancel, "text after cancellation must match");
     }
 
     @Test
     public void alertBoxTextTest() {
-        driver.findElement(By.cssSelector("button[onclick='myAlertFunction()']")).click();
+        driver.findElement(SeleniumEasyConstants.alertBox).click();
         Alert alert = driver.switchTo().alert();
         String textOnAlert = alert.getText();
         alert.accept();
-        assertEquals("I am an alert box!", textOnAlert);
+        assertEquals(alertBoxText, textOnAlert, "alert message text must match");
     }
 
     @AfterEach
@@ -54,11 +56,3 @@ public class AlertsTest {
         driver.quit();
     }
 }
-
-/*
-6.
-Create 3 tests for alerts
-(URL - https://demo.seleniumeasy.com/javascript-alert-box-demo.html).
-2 tests for “Java Script Confirm Box” and
-1 for “Java Script Alert Box”.
- */
