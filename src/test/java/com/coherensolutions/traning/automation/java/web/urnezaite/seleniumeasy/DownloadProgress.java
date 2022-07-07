@@ -15,7 +15,7 @@ import java.time.Duration;
  * c)	Refresh page when percentage is >= 50
  */
 public class DownloadProgress extends BaseTest {
-    public final String downloadBoundary = "50%";
+    public static final String DOWNLOAD_BOUNDARY = "50%";
 
     @BeforeEach
     public void  navigateToMainPage() {
@@ -29,7 +29,7 @@ public class DownloadProgress extends BaseTest {
         (new WebDriverWait(driver, Duration.ofSeconds(60))).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.findElement(SeleniumEasyConstants.downloadProgress).
-                        getText().contains(downloadBoundary);
+                        getText().contains(DOWNLOAD_BOUNDARY);
             }
         });
         driver.navigate().refresh();

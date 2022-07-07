@@ -13,7 +13,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Timeouts.baseDriversImplicitWait));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Timeouts.BASE_DRIVERS_IMPLICIT_WAIT));
         driver.manage().window().maximize();
     }
 

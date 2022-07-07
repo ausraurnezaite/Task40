@@ -2,10 +2,8 @@ package com.coherensolutions.traning.automation.java.web.urnezaite.yandex;
 
 import com.coherensolutions.traning.automation.java.web.urnezaite.Timeouts;
 import com.coherensolutions.traning.automation.java.web.urnezaite.seleniumeasy.BaseTest;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.Assertions;
@@ -22,7 +20,7 @@ public class YandexTest extends BaseTest {
 
     @BeforeEach
     public void set() {
-        driver.get(YandexConstants.yandexMailLink);
+        driver.get(YandexConstants.YANDEX_MAIL_LINK);
     }
 
     @ParameterizedTest
@@ -31,24 +29,24 @@ public class YandexTest extends BaseTest {
             "selenium.test.account2,  seleniumtestaccount2"
     })
     public void logInTest(String username, String password) {
-        driver.findElement(YandexConstants.logInOption).click();
-        driver.findElement(YandexConstants.usernameInput).sendKeys(username);
-        driver.findElement(YandexConstants.logInButton).click();
-        driver.findElement(YandexConstants.passwordInput).sendKeys(password);
-        driver.findElement(YandexConstants.logInButton).click();
+        driver.findElement(YandexConstants.LOGIN_OPTION).click();
+        driver.findElement(YandexConstants.USERNAME_INPUT).sendKeys(username);
+        driver.findElement(YandexConstants.LOGIN_BUTTON).click();
+        driver.findElement(YandexConstants.PASSWORD_INPUT).sendKeys(password);
+        driver.findElement(YandexConstants.LOGIN_BUTTON).click();
 
         try {
-            Thread.sleep(Timeouts.yandexLogInSleep);
+            Thread.sleep(Timeouts.YANDEX_LOG_IN_SLEEP);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeouts.yandexDriversExplicitWait));
-        wait.pollingEvery(Duration.ofMillis(Timeouts.yandexDriversExplicitWaitPolling));
-        WebElement userElement = wait.until(ExpectedConditions.presenceOfElementLocated(YandexConstants.userLocator));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeouts.YANDEX_DRIVERS_EXPLICIT_WAIT));
+        wait.pollingEvery(Duration.ofMillis(Timeouts.YANDEX_DRIVERS_EXPLICIT_WAIT_POLLING));
+        WebElement userElement = wait.until(ExpectedConditions.presenceOfElementLocated(YandexConstants.USER_LOCATOR));
 
         Assertions.assertEquals(username, userElement.getText(), "users logo has incorrect username");
-        Assertions.assertTrue(driver.findElement(YandexConstants.mailIcon).isDisplayed(), "email icon is not displayed");
-        Assertions.assertTrue(driver.findElement(YandexConstants.composeButton).isEnabled(), "compose button is not enabled");
+        Assertions.assertTrue(driver.findElement(YandexConstants.MAIL_ICON).isDisplayed(), "email icon is not displayed");
+        Assertions.assertTrue(driver.findElement(YandexConstants.COMPOSE_BUTTON).isEnabled(), "compose button is not enabled");
     }
 }

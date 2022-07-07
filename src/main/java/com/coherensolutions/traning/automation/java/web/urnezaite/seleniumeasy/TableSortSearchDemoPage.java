@@ -1,11 +1,9 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.seleniumeasy;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ import java.util.List;
  */
 public class TableSortSearchDemoPage {
     private final WebDriver driver;
-    public final String rowsShown = "10";
+    public static final String ROWS_SHOWN = "10";
 
     public TableSortSearchDemoPage(WebDriver driver) {
         this.driver = driver;
@@ -27,7 +25,7 @@ public class TableSortSearchDemoPage {
         List<Employee> employees = new ArrayList<>();
 
         Select selection = new Select(driver.findElement(SeleniumEasyConstants.rowsQuantityDisplayed));
-        selection.selectByVisibleText(rowsShown);
+        selection.selectByVisibleText(ROWS_SHOWN);
 
         boolean tableEnd = false;
 

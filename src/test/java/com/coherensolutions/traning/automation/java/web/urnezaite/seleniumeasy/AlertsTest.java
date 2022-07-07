@@ -15,9 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 1 for “Java Script Alert Box”.
  */
 public class AlertsTest extends BaseTest {
-    public static final String comfirmBoxAfterConfirmExpectedText = "You pressed OK!";
-    public static final String comfirmBoxAfterCancelExpectedText = "You pressed Cancel!";
-    public static final String alertBoxText = "I am an alert box!";
+    public static final String COMFIRM_BOX_AFTER_CONFIRM_EXPECTED_TEXT = "You pressed OK!";
+    public static final String COMFIRM_BOX_AFTER_CANCEL_EXPECTED_TEXT = "You pressed Cancel!";
+    public static final String ALERT_BOX_TEXT = "I am an alert box!";
 
     @BeforeEach
     public void  navigateToMainPage() {
@@ -30,7 +30,7 @@ public class AlertsTest extends BaseTest {
         Alert alert = driver.switchTo().alert();
         alert.accept();
         String textOnComfirm = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
-        assertEquals(comfirmBoxAfterConfirmExpectedText, textOnComfirm, "text after confirmation must match");
+        assertEquals(COMFIRM_BOX_AFTER_CONFIRM_EXPECTED_TEXT, textOnComfirm, "text after confirmation must match");
     }
 
     @Test
@@ -39,7 +39,7 @@ public class AlertsTest extends BaseTest {
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
         String textOnCancel = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
-        assertEquals(comfirmBoxAfterCancelExpectedText, textOnCancel, "text after cancellation must match");
+        assertEquals(COMFIRM_BOX_AFTER_CANCEL_EXPECTED_TEXT, textOnCancel, "text after cancellation must match");
     }
 
     @Test
@@ -48,7 +48,7 @@ public class AlertsTest extends BaseTest {
         Alert alert = driver.switchTo().alert();
         String textOnAlert = alert.getText();
         alert.accept();
-        assertEquals(alertBoxText, textOnAlert, "alert message text must match");
+        assertEquals(ALERT_BOX_TEXT, textOnAlert, "alert message text must match");
     }
 
     @AfterEach
