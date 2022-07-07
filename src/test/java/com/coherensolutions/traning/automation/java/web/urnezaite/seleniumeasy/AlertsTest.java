@@ -21,30 +21,30 @@ public class AlertsTest extends BaseTest {
 
     @BeforeEach
     public void  navigateToMainPage() {
-        driver.get(SeleniumEasyConstants.alertBoxLink);
+        driver.get(SeleniumEasyConstants.ALERT_BOX_LINK);
     }
 
     @Test
     public void confirmBoxAfterConfirmTextTest() {
-        driver.findElement(SeleniumEasyConstants.comfirmBox).click();
+        driver.findElement(SeleniumEasyConstants.COMFIRM_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.accept();
-        String textOnComfirm = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
+        String textOnComfirm = driver.findElement(SeleniumEasyConstants.COMFIRM_BOX_ON_CONFIRM_CANCEL_TEXT).getText();
         assertEquals(COMFIRM_BOX_AFTER_CONFIRM_EXPECTED_TEXT, textOnComfirm, "text after confirmation must match");
     }
 
     @Test
     public void confirmBoxAfterCancelTextTest() {
-        driver.findElement(SeleniumEasyConstants.comfirmBox).click();
+        driver.findElement(SeleniumEasyConstants.COMFIRM_BOX).click();
         Alert alert = driver.switchTo().alert();
         alert.dismiss();
-        String textOnCancel = driver.findElement(SeleniumEasyConstants.comfirmBoxOnConfirmCancelText).getText();
+        String textOnCancel = driver.findElement(SeleniumEasyConstants.COMFIRM_BOX_ON_CONFIRM_CANCEL_TEXT).getText();
         assertEquals(COMFIRM_BOX_AFTER_CANCEL_EXPECTED_TEXT, textOnCancel, "text after cancellation must match");
     }
 
     @Test
     public void alertBoxTextTest() {
-        driver.findElement(SeleniumEasyConstants.alertBox).click();
+        driver.findElement(SeleniumEasyConstants.ALERT_BOX).click();
         Alert alert = driver.switchTo().alert();
         String textOnAlert = alert.getText();
         alert.accept();

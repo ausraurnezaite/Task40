@@ -24,17 +24,17 @@ public class TableSortSearchDemoPage {
     public List<Employee> filterEmployees(int ageMoreThanFilter, int salaryLessThanFilter) {
         List<Employee> employees = new ArrayList<>();
 
-        Select selection = new Select(driver.findElement(SeleniumEasyConstants.rowsQuantityDisplayed));
+        Select selection = new Select(driver.findElement(SeleniumEasyConstants.ROWS_QUANTITY_DISPLAYED));
         selection.selectByVisibleText(ROWS_SHOWN);
 
         boolean tableEnd = false;
 
         while (!tableEnd) {
 
-            List<WebElement> rows = driver.findElements(SeleniumEasyConstants.tr);
+            List<WebElement> rows = driver.findElements(SeleniumEasyConstants.TABLE_ROW);
 
             for (WebElement row : rows) {
-                List<WebElement> cells = row.findElements(SeleniumEasyConstants.td);
+                List<WebElement> cells = row.findElements(SeleniumEasyConstants.TABLE_DATA);
                 String name = cells.get(0).getText();
                 String position = cells.get(1).getText();
                 String office = cells.get(2).getText();
@@ -46,8 +46,8 @@ public class TableSortSearchDemoPage {
                 }
             }
 
-            if (!driver.findElement(SeleniumEasyConstants.nextButton).getAttribute("class").contains("disabled")) {
-                driver.findElement(SeleniumEasyConstants.nextButton).click();
+            if (!driver.findElement(SeleniumEasyConstants.NEXT_BUTTON).getAttribute("class").contains("disabled")) {
+                driver.findElement(SeleniumEasyConstants.NEXT_BUTTON).click();
             } else {
                 tableEnd = true;
             }

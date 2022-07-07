@@ -19,16 +19,16 @@ public class DownloadProgress extends BaseTest {
 
     @BeforeEach
     public void  navigateToMainPage() {
-        driver.get(SeleniumEasyConstants.downloadProgressLink);
+        driver.get(SeleniumEasyConstants.DOWNLOAD_PROGRESS_LINK);
     }
 
     @Test
     public void refreshPageWhenPercentageIsMoreThan50() {
-        driver.findElement(SeleniumEasyConstants.downloadButton).click();
+        driver.findElement(SeleniumEasyConstants.DOWNLOAD_BUTTON).click();
 
         (new WebDriverWait(driver, Duration.ofSeconds(60))).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.findElement(SeleniumEasyConstants.downloadProgress).
+                return d.findElement(SeleniumEasyConstants.DOWNLOAD_PROGRESS).
                         getText().contains(DOWNLOAD_BOUNDARY);
             }
         });

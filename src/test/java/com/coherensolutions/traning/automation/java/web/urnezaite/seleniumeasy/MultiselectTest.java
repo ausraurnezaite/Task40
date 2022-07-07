@@ -19,12 +19,12 @@ public class MultiSelectTest extends BaseTest {
 
     @BeforeEach
     public void  navigateToMainPage() {
-        driver.get(SeleniumEasyConstants.selectDropdownLink);
+        driver.get(SeleniumEasyConstants.SELECT_DROPDOWN_LINK);
     }
 
     @Test
     public void multiSelectTest() {
-        Select selection = new Select(driver.findElement(SeleniumEasyConstants.multiSelect));
+        Select selection = new Select(driver.findElement(SeleniumEasyConstants.MULTI_SELECT));
 
         if (selection.isMultiple()) {
             selection.selectByIndex(new Random().nextInt(selection.getOptions().size()));
