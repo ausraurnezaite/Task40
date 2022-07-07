@@ -17,7 +17,7 @@ public class TableSortSearchDemoTest extends BaseTest {
     @Test
     public void testTable() {
         TableSortSearchDemoPage tablePage = new TableSortSearchDemoPage(driver);
-        List<TableSortSearchDemoPage.Employee> employees = tablePage.filterEmployees(ageMoreThan, salaryLessThan);
+        List<Employee> employees = tablePage.filterEmployees(ageMoreThan, salaryLessThan);
         employees.forEach(System.out::println);
     }
 }

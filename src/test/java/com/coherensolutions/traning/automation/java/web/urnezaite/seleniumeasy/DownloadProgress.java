@@ -18,8 +18,8 @@ public class DownloadProgress extends BaseTest {
     public final String downloadBoundary = "50%";
 
     @BeforeEach
-    public void setUp() {
-        set(SeleniumEasyConstants.downloadProgressLink);
+    public void set() {
+        driver.get(SeleniumEasyConstants.downloadProgressLink);
     }
 
     @Test

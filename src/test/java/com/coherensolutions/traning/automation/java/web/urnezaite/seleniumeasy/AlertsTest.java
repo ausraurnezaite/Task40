@@ -15,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * 1 for “Java Script Alert Box”.
  */
 public class AlertsTest extends BaseTest {
-    public final String comfirmBoxAfterConfirmExpectedText = "You pressed OK!";
-    public final String comfirmBoxAfterCancelExpectedText = "You pressed Cancel!";
-    public final String alertBoxText = "I am an alert box!";
+    public static final String comfirmBoxAfterConfirmExpectedText = "You pressed OK!";
+    public static final String comfirmBoxAfterCancelExpectedText = "You pressed Cancel!";
+    public static final String alertBoxText = "I am an alert box!";
 
     @BeforeEach
-    public void setUp() {
-        set(SeleniumEasyConstants.alertBoxLink);
+    public void set() {
+        driver.get(SeleniumEasyConstants.alertBoxLink);
     }
 
     @Test

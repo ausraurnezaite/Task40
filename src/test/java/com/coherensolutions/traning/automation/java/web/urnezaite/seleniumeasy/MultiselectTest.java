@@ -19,7 +19,7 @@ public class MultiSelectTest extends BaseTest {
 
     @BeforeEach
     public void setUp() {
-        set(SeleniumEasyConstants.selectDropdownLink);
+        driver.get(SeleniumEasyConstants.selectDropdownLink);
     }
 
     @Test
