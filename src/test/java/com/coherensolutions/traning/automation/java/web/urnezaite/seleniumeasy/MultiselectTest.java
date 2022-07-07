@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class MultiSelectTest extends BaseTest {
 
     @BeforeEach
-    public void setUp() {
+    public void  navigateToMainPage() {
         driver.get(SeleniumEasyConstants.selectDropdownLink);
     }
 

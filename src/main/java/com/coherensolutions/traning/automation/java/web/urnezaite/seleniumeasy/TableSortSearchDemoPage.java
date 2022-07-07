@@ -21,9 +21,6 @@ public class TableSortSearchDemoPage {
 
     public TableSortSearchDemoPage(WebDriver driver) {
         this.driver = driver;
-        driver.get(SeleniumEasyConstants.tableSortSearchLink);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        driver.manage().window().maximize();
     }
 
     public List<Employee> filterEmployees(int ageMoreThanFilter, int salaryLessThanFilter) {

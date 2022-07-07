@@ -20,7 +20,7 @@ public class AlertsTest extends BaseTest {
     public static final String alertBoxText = "I am an alert box!";
 
     @BeforeEach
-    public void set() {
+    public void  navigateToMainPage() {
         driver.get(SeleniumEasyConstants.alertBoxLink);
     }
 

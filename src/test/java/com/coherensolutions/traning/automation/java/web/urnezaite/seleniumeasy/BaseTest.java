@@ -1,5 +1,6 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.seleniumeasy;
 
+import com.coherensolutions.traning.automation.java.web.urnezaite.Timeouts;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,7 @@ public class BaseTest {
 
     @BeforeEach
     public void setUp() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Timeouts.baseDriversImplicitWait));
         driver.manage().window().maximize();
     }
 

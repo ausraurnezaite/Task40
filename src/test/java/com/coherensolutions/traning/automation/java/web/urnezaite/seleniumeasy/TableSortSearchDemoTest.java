@@ -1,5 +1,6 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.seleniumeasy;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -16,6 +17,7 @@ public class TableSortSearchDemoTest extends BaseTest {
 
     @Test
     public void testTable() {
+        driver.get(SeleniumEasyConstants.tableSortSearchLink);
         TableSortSearchDemoPage tablePage = new TableSortSearchDemoPage(driver);
         List<Employee> employees = tablePage.filterEmployees(ageMoreThan, salaryLessThan);
         employees.forEach(System.out::println);

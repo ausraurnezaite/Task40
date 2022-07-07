@@ -1,9 +1,11 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.yandex;
 
+import com.coherensolutions.traning.automation.java.web.urnezaite.Timeouts;
 import com.coherensolutions.traning.automation.java.web.urnezaite.seleniumeasy.BaseTest;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
+import org.junit.jupiter.api.Timeout;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.api.Assertions;
@@ -36,13 +38,13 @@ public class YandexTest extends BaseTest {
         driver.findElement(YandexConstants.logInButton).click();
 
         try {
-            Thread.sleep(3000);
+            Thread.sleep(Timeouts.yandexLogInSleep);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
-        wait.pollingEvery(Duration.ofMillis(700));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeouts.yandexDriversExplicitWait));
+        wait.pollingEvery(Duration.ofMillis(Timeouts.yandexDriversExplicitWaitPolling));
         WebElement userElement = wait.until(ExpectedConditions.presenceOfElementLocated(YandexConstants.userLocator));
 
         Assertions.assertEquals(username, userElement.getText(), "users logo has incorrect username");
